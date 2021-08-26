@@ -15,7 +15,6 @@ public class Movie {
     @NotBlank
     private String title;
 
-    @NotBlank
     private Date releaseDate;
     private String genre;
     private String overview;

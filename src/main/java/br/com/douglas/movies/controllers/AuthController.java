@@ -1,4 +1,4 @@
-package br.com.douglas.movies;
+package br.com.douglas.movies.controllers;
 
 
 import br.com.douglas.movies.dtos.JwtDto;
