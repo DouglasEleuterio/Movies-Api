@@ -6,7 +6,6 @@ O desafio é construir uma API com tema 'Movie'.
 Infelizmente meu tempo essa semana foi reduzido graças as demandas do trabalho atual.
 Não pude dedicar tempo o suficiente para construir a aplicação como gostaria, para não perder a oportunidade, estou enviando da forma que posso.
 O que está faltando:
-- An unauthenticated /stats route with statistics from the rest api
 - Create a Docker setup (container, volumes, etc)
 - REST API Documentation
 - Unit tests
@@ -127,9 +126,7 @@ Será retornado uma resposta com Status Code 200 e um objeto no corpo da respost
 ```
 
 O Sistema está pronto para Armazenar, Deletar, Recuperar por Id, Recuperar por Title.
-Não tive tempo para implementar o PUT e também não tive tempo de implementar as consultas públicas, que eram, quantidade de filmes e quantidade por genero, a aplicação já possui uma rota públic configurada para a implementação, a rota é: "/api/public/** configurada na classe 'WebSecurityConfig'
-
-Não será possível prosseguir com as demais instruções pois tenho uma reunião iniciando em 5 minutos e tenho até as 16:00 do dia de hoje para finalizar a POC.
+Não tive tempo para implementar o PUT.
 
 
 Obrigado pela oportunidade, gostaria que fosse levada em consideração o pouco tempo que pude dispor para implementação.
