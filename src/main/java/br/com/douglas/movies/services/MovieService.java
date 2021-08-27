@@ -58,6 +58,11 @@ public class MovieService {
         return messageDto;
     }
 
+    public MessageDto getTotalMovies() {
+        MessageDto messageDto = new MessageDto("Total of Movies: " + movieRepository.findAll().size(), new Date(), null);
+        return messageDto;
+    }
+
     public MessageDto getAll() {
         MessageDto messageDto = new MessageDto("List of Movies: ", new Date(), movieRepository.findAll());
         return messageDto;
@@ -90,4 +95,5 @@ public class MovieService {
             return null;
         }
     }
+
 }
