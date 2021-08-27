@@ -16,8 +16,14 @@ public class StatsController {
     MovieService service;
 
     @GetMapping("/totalMovies")
-    public ResponseEntity<MessageDto> getAllMovies() {
+    public ResponseEntity<MessageDto> getTotalMovies() {
         MessageDto allMovies = service.getTotalMovies();
+        return ResponseEntity.ok(allMovies);
+    }
+
+    @GetMapping("/totalMoviesByGenre")
+    public ResponseEntity<MessageDto> getTotalMoviesByGenre() {
+        MessageDto allMovies = service.getTotalMoviesByGenre();
         return ResponseEntity.ok(allMovies);
     }
 }

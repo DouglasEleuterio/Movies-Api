@@ -5,7 +5,6 @@ import br.com.douglas.movies.models.Movie;
 import br.com.douglas.movies.repository.MovieRepository;
 import br.com.douglas.movies.security.jwt.AuthEntryPointJwt;
 import javassist.tools.rmi.ObjectNotFoundException;
-import org.aspectj.bridge.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MovieService {
@@ -37,7 +38,7 @@ public class MovieService {
         MessageDto messageDto = null;
         try {
             List<Movie> movies = movieRepository.findByTitle(title).orElseThrow(ClassNotFoundException::new);
-            messageDto = new MessageDto("Movie(s) located: | "+movies.size(), new Date(), movies);
+            messageDto = new MessageDto("Movie(s) located: | " + movies.size(), new Date(), movies);
         } catch (ClassNotFoundException e) {
             logger.info("Movie not Found: {}", title);
             throw new ObjectNotFoundException(title);
@@ -60,6 +61,25 @@ public class MovieService {
 
     public MessageDto getTotalMovies() {
         MessageDto messageDto = new MessageDto("Total of Movies: " + movieRepository.findAll().size(), new Date(), null);
+        return messageDto;
+    }
+
+    public MessageDto getTotalMoviesByGenre() {
+
+        List<Movie> all = movieRepository.findAll();
+        Map<String, Integer> map = new HashMap<>();
+        int integer = 0;
+        for (Movie movie : all) {
+            if (map.containsKey(movie.getGenre())) {
+                map.put(movie.getGenre(), integer++);
+            }else {
+                map.put(movie.getGenre(), 1);
+            }
+        }
+
+
+        MessageDto messageDto = new MessageDto("Total of Movies by Genre", new Date(), map);
+
         return messageDto;
     }
 
